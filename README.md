@@ -4,6 +4,8 @@
 
 Live plate: https://mizcausevic-dev.github.io/full-flow-rocket-engine-explainer/
 
+Repository: https://github.com/mizcausevic-dev/full-flow-rocket-engine-explainer
+
 ## What this is
 
 An interactive anatomy plate for Full-Flow Rocket Engine. Play, scrub, or jump the five stages. The same frame always draws the same picture.

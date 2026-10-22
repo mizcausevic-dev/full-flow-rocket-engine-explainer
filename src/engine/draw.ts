@@ -399,7 +399,7 @@ function drawMachInset(ctx: CanvasRenderingContext2D, w: number, h: number, alph
   ctx.stroke();
   ctx.font = "10px JetBrains Mono, ui-monospace, monospace";
   ctx.fillStyle = CYAN;
-  ctx.fillText("SCHEMATIC  \u00b7  DE LAVAL REGIMES", x + 10, y + 16);
+  ctx.fillText("SCHEMATIC  ·  DE LAVAL REGIMES", x + 10, y + 16);
   ctx.fillStyle = BONE;
   ctx.font = "12px Space Grotesk, sans-serif";
   ctx.fillText("Subsonic", x + 12, y + 42);
@@ -659,7 +659,7 @@ export function renderPlate(
     ctx.fillText("A sectional model of the path from the pumps to the nozzle.", 48, 112);
     ctx.font = "14px JetBrains Mono, ui-monospace, monospace";
     ctx.fillStyle = CYAN;
-    ctx.fillText("34 seconds  \u00b7  1,020 frames  \u00b7  no pressure, speed, or mixture ratio asserted", 48, 142);
+    ctx.fillText("34 seconds  ·  1,020 frames  ·  no pressure, speed, or mixture ratio asserted", 48, 142);
   }
 }
 

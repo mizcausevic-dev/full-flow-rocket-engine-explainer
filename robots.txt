@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://mizcausevic-dev.github.io/full-flow-rocket-engine-explainer
+Sitemap: https://mizcausevic-dev.github.io/full-flow-rocket-engine-explainer/sitemap.xml

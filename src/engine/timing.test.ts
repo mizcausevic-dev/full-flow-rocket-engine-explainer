@@ -17,7 +17,6 @@ test("timeline covers every frame once", () => {
   assert.equal(CHAPTERS[CHAPTERS.length - 1].f1, FRAME_MAX);
   for (let i = 1; i < CHAPTERS.length; i += 1) {
     assert.equal(CHAPTERS[i].f0, CHAPTERS[i - 1].f1 + 1);
-    assert.equal(hits.length, 1, `frame ${f}`);
   }
   for (let f = 0; f <= FRAME_MAX; f += 1) {
     const hits = CHAPTERS.filter((c) => f >= c.f0 && f <= c.f1);

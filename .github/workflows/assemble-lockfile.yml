@@ -1,0 +1,50 @@
+name: Assemble lockfile
+on:
+  push:
+    paths:
+      - .github/workflows/assemble-lockfile.yml
+permissions:
+  contents: write
+concurrency:
+  group: assemble-lockfile
+  cancel-in-progress: false
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Write package-lock.json from verified slices
+        run: |
+          cat \
+            _probe_c00.txt \
+            _probe_mid.txt \
+            _probe_mid2.txt \
+            _probe_mid3.txt \
+            _probe_mid4.txt \
+            _probe_mid5.txt \
+            _probe_mid6.txt \
+            _probe_mid7.txt \
+            _probe_mid8.txt \
+            _probe_mid9.txt \
+            _probe_mid10.txt \
+            _probe_mid11.txt \
+            _probe_mid12.txt \
+            > package-lock.json
+          python3 - << 'PY'
+          import hashlib
+          b = open("package-lock.json", "rb").read()
+          header = ("blob %d" % len(b)).encode() + bytes([0])
+          h = hashlib.sha1(header + b).hexdigest()
+          expected = "96209ebe093c44af114e366f0455c1ba9f2f0b07"
+          if len(b) != 234308 or h != expected:
+              raise SystemExit("lockfile mismatch size=%s sha=%s" % (len(b), h))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          if git diff --cached --quiet; then
+            echo "package-lock.json already matches"
+            exit 0
+          fi
+          git commit -m "Add the Next.js package lockfile"
+          git push origin HEAD:main

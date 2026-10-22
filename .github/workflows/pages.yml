@@ -30,6 +30,7 @@ jobs:
           if [ ! -s public/hero-editorial.jpg ]; then
             base64 -d public/hero-editorial.b64 > public/hero-editorial.jpg
           fi
+          rm -f public/hero-editorial.b64
 
       - name: Install, test, and build
         run: |
